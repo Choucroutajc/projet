@@ -10,7 +10,7 @@ public:
     aiguille();
     QRectF boundingRect() const;
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
-    QSlider *S1 = new QSlider(Qt::Horizontal, 0);
+    QSlider *S1 = new QSlider(Qt::Horizontal, nullptr);
     void RotateAiguille();
 
 private:
