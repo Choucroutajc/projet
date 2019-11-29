@@ -18,8 +18,7 @@ public:
 
 private:
    //dimensions cadran
-   QRectF rec      = QRectF(0,0, 200.0, 200.0);
-
+   QRectF rec = QRectF(0,0, 200.0, 200.0);
 };
 
 #endif // CADRAN_H

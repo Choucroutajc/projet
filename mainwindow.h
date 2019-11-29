@@ -13,27 +13,22 @@
 #include "arc.h"
 #include "test.h"
 
-
-
-
-
-namespace Ui {
-class MainWindow;
-}
+QT_BEGIN_NAMESPACE
+namespace Ui { class MainWindow; }
+QT_END_NAMESPACE
 
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
 
 public:
-    explicit MainWindow(QWidget *parent = 0);
+    explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
 private:
     Ui::MainWindow *ui;
 //    QGraphicsScene *scene;
     QGraphicsView *view;
-
 };
 
 #endif // MAINWINDOW_H

@@ -4,9 +4,7 @@
 #include <QtMath>
 
 test::test()
-{
-
-}
+{}
 
 QRectF test::boundingRect() const
 {
@@ -15,12 +13,7 @@ QRectF test::boundingRect() const
 
 void test::paint(QPainter *t, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
-    t->setPen(QPen(QBrush("black") , 10 , Qt::SolidLine,Qt::FlatCap));
-
+    t->setPen(QPen(QBrush("black"), 10 ,Qt::SolidLine, Qt::FlatCap));
     t->setBrush(Qt::red);  //rempli rouge
-
     t->drawRect(rec0);
-
 }
-
-
