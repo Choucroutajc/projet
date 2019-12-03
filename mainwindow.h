@@ -7,28 +7,26 @@
 #include <QGraphicsView>
 #include <QtCore>
 #include <QtGui>
-
+//#include "aiguille.h"
 #include "cadran.h"
-#include "aiguille.h"
-#include "arc.h"
-#include "test.h"
 
-QT_BEGIN_NAMESPACE
-namespace Ui { class MainWindow; }
-QT_END_NAMESPACE
+namespace Ui {
+class MainWindow;
+}
 
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
 
 public:
-    explicit MainWindow(QWidget *parent = nullptr);
+    explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
+
+    QGraphicsScene *scene;
+
 
 private:
     Ui::MainWindow *ui;
-//    QGraphicsScene *scene;
-    QGraphicsView *view;
 };
 
 #endif // MAINWINDOW_H

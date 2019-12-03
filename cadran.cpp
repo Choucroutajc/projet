@@ -1,12 +1,21 @@
 #include "cadran.h"
-
-#include <QPainter>
-#include <QtMath>
+#include <Qt>
+#include <QtCore>
+#include <math.h>
 #include <QDebug>
+#include <QPainter>
+
+int A = 500;
+int B = 500;
+QRectF rec     = QRectF(0,0, A, B);
+int startAngle = 30 * 16;
+int spanAngle  = 120 * 16;
+
+QRectF recT     = QRectF(0,0, A/10, B/10);
 
 cadran::cadran()
 {
-    setFlag(ItemIsMovable);
+  //  textLabel = "km/h";
 }
 
 QRectF cadran::boundingRect() const
@@ -14,48 +23,84 @@ QRectF cadran::boundingRect() const
     return QRectF(rec);
 }
 
-void cadran::paint(QPainter *p, const QStyleOptionGraphicsItem *option, QWidget *widget)
+void cadran::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
-    //for (int i = 0; i < 12; ++i) {
-    //    p->drawLine(88, 0, 96, 0);
-    //    p->rotate(30.0);
-    //}
+    ellipse(painter, rec);
+    aiguille(painter, rec);
+    graduation(painter,recT);
+}
 
-    p->setPen(QPen(QBrush("black"), 10, Qt::SolidLine, Qt::FlatCap));
+void cadran::ellipse(QPainter *painter, QRectF)
+{
+    painter->setPen(QPen(QBrush("black") , 10 , Qt::SolidLine,Qt::FlatCap));
 
-    //p->setBrush(QColor(10, 230, 50)); //rempli vert
-    //p->setBrush(Qt::red);  //rempli rouge
+    QBrush b1( Qt::red, Qt::Dense4Pattern );
+    painter->setBrush(b1);
+    painter->drawEllipse(rec);
+    painter->drawText(A/2-10,A/2+30, "km/h");
+}
 
-    QBrush b1(Qt::red, Qt::Dense4Pattern);
-    p->setBrush(b1);
-    p->drawEllipse(rec);
+void cadran::aiguille(QPainter *painter, QRectF)
+{
+    painter->setPen(QPen(QBrush("yellow") , 5 , Qt::SolidLine,Qt::FlatCap));
+    painter->translate(A/2, B/2);
+    painter->scale(1, -1);
+//grde graduation
+        for (int i = 0; i < 12; ++i)
+            {
+                painter->drawLine(A/2+20,0,A/2-20,0);
+                painter->rotate(30.0);
 
-    //p->scale(qreal sx 10,qreal sy 50);
-    //static const QPoint minuteHand[3] = {
-    //    QPoint(7, 8),
-    //    QPoint(-7, 8),
-    //    QPoint(0, -70)
-    //};
+            }
+//petite graduation
+            for (int j = 0; j < 60; j++)
+            {
+                if((j %5) != 0)
+                painter->drawLine(A/2, 0, A/2-20, 0);
+                painter->rotate(6.0);
+           }
 
-    //for (int i = 0; i < 12; ++i)
-    //{
-    //    p->drawLine(88, 0, 96, 0);
-    //    p->rotate(30.0);
-    //}
+//             angle en radian degre*pi/180
+//            d(A,B) = sqrt ( sum ( A(i,j)-B(i,j) )^2 );
 
-    //p->setPen(Qt::NoPen);
-    //p->setBrush(Qt::black);
+//        painter->translate(500/2, 500/2);
+//        painter->scale(1, -1);
+            int r =  A/2           ;
+            //changer angle change l'aiguille
+            float angled = 170;
+            float angler = qDegreesToRadians(angled);
+            int x = r*qCos(angler);
+            int y = r*qSin(angler);
 
-    //p->save();
-    //p->rotate(6.0 * (x() + y() / 60.0));
-    //p->drawConvexPolygon(minuteHand, 3);
-    //p->restore();
+            static const QPoint bout[3] =
+            {
+                QPoint(7, 8),
+                QPoint(3, 8),
+                QPoint(x, y)
+            };
+                painter->setPen(QPen(QBrush("yellow") , 5 , Qt::SolidLine,Qt::FlatCap));
+                QBrush ba1( Qt::red, Qt::Dense4Pattern );
+                painter->setBrush(ba1);
+                painter->drawConvexPolygon(bout, 3);
 
-    //p->setPen(Qt::black);
+}
 
-    //for (int j = 0; j < 60; ++j) {
-    //    if ((j % 5) != 0)
-    //        p->drawLine(92, 0, 96, 0);
-    //    p->rotate(6.0);
-    //}
+void cadran::graduation(QPainter *painter, QRectF)
+{
+    //painter->restore();
+    painter->setPen(QPen(QBrush("red") , 5 , Qt::SolidLine,Qt::FlatCap));
+
+        for (int k = 0; k <=12 /*graduations*/ ; ++k)
+        {
+
+                painter->rotate(30.0);
+
+                //painter->drawText(A/2-50,0,"kkk");
+                //painter->translate();
+                //painter->drawStaticText(0,0, ));
+
+                painter->drawText(recT, Qt::AlignCenter, "Qt");
+               // painter->drawText(A/2-50,0,"kkk");
+               // painter->restore();
+            }
 }

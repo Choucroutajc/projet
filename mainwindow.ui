@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>567</width>
-    <height>407</height>
+    <width>750</width>
+    <height>744</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -19,49 +19,14 @@
      <widget class="QGraphicsView" name="graphicsView"/>
     </item>
     <item>
-     <widget class="QLabel" name="label">
+     <widget class="QPushButton" name="EXIT">
       <property name="text">
-       <string>S1</string>
+       <string>EXIT</string>
       </property>
      </widget>
     </item>
     <item>
-     <widget class="QSpinBox" name="spinBox">
-      <property name="maximum">
-       <number>1000</number>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QSlider" name="S1">
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QLabel" name="label_2">
-      <property name="text">
-       <string>S2</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QSpinBox" name="spinBox_2"/>
-    </item>
-    <item>
-     <widget class="QSlider" name="S2">
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QPushButton" name="pushButton">
-      <property name="text">
-       <string>Exit</string>
-      </property>
-     </widget>
+     <widget class="QSpinBox" name="spinBox"/>
     </item>
    </layout>
   </widget>
@@ -70,7 +35,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>567</width>
+     <width>750</width>
      <height>22</height>
     </rect>
    </property>
@@ -89,50 +54,18 @@
  <resources/>
  <connections>
   <connection>
-   <sender>pushButton</sender>
+   <sender>EXIT</sender>
    <signal>clicked()</signal>
    <receiver>MainWindow</receiver>
    <slot>close()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>242</x>
-     <y>336</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>242</x>
-     <y>189</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>S1</sender>
-   <signal>sliderMoved(int)</signal>
-   <receiver>spinBox</receiver>
-   <slot>setValue(int)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>283</x>
+     <x>184</x>
      <y>261</y>
     </hint>
     <hint type="destinationlabel">
-     <x>283</x>
-     <y>234</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>S2</sender>
-   <signal>sliderMoved(int)</signal>
-   <receiver>spinBox_2</receiver>
-   <slot>setValue(int)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>283</x>
-     <y>337</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>283</x>
-     <y>310</y>
+     <x>199</x>
+     <y>149</y>
     </hint>
    </hints>
   </connection>

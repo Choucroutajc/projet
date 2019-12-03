@@ -14,11 +14,17 @@ public:
     cadran();
     QRectF boundingRect() const;
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
-    void ellipse(QRectF ellipse);
 
+    void ellipse(QPainter *painter, QRectF);
+    void aiguille(QPainter *painter, QRectF);
+//    void arc(QPainter *painter, QRectF);
+//    void test(QPainter *painter, QRectF);
+//    void frame(QPainter *painter, QRectF);
+
+
+    void graduation(QPainter *painter, QRectF);
 private:
-   //dimensions cadran
-   QRectF rec = QRectF(0,0, 200.0, 200.0);
+    int graduations;
 };
 
 #endif // CADRAN_H
